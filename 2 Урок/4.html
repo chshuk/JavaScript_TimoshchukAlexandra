@@ -31,7 +31,51 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  const first = +prompt("Введите первое число: ");
+  const second = +prompt("Введите второе число: ");
+
+  console.log(summ(first, second));
+  console.log(differ(first, second));
+  console.log(multiply(first, second));
+  console.log(div(first, second));
+
+
+  function summ(a, b) {
+    /**
+     *  возвращаем результат сложения переменных а и b
+     * а - первое число
+     * b - второе число
+     */
+    return a + b;
+  }
+
+  function differ(a, b) {
+    /** 
+     * возвращаем модуль разности чисел а и b
+     * a - первое число
+     * b - второе число
+     */
+    return Math.abs(a - b);
+  }
+
+  function multiply(a, b) {
+    /**
+     * возвращает произведение чисел а и b
+     * a - первое число
+     * b - второе число
+     */
+    return a * b;
+  }
+
+  function div(a, b) {
+    /**
+     * возвращает результат деления чисел а и b
+     * a - первое число
+     * b - второе число
+     */
+    return a / b;
+  }
+
 </script>
 </body>
 </html>

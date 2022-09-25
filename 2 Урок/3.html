@@ -21,7 +21,19 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  const a = +prompt("Введите первое число: ");
+  const b = +prompt("Введите второе число: ");
+  
+  if (a > 0 && b > 0) {
+    const diff = a - b;
+    console.log(`Разность чисел ${a} и ${b} равна ${diff}`);
+  } else if (a < 0 && b < 0) {
+      const mul = a * b;
+      console.log(`Произведение чисел ${a} и ${b} равно ${mul}`);
+  } else if (a * b < 0) {
+      const sum = a + b;
+      console.log(`Сумма чисел ${a} и ${b} равна ${sum}`)
+  }
 </script>
 </body>
 </html>
