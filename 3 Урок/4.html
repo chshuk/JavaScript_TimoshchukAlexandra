@@ -44,7 +44,15 @@
     },
   ];
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  // 1
+
+  let prodPhoto = products.filter(item => item.photos?.length > 0)
+  console.log(prodPhoto)
+
+  // 2
+
+  let sortedProducts = products.sort((item1, item2) => item1.price - item2.price)
+  console.log(sortedProducts)
 </script>
 </body>
 </html>
