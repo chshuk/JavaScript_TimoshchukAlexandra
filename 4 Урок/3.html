@@ -30,8 +30,25 @@
 -->
 <script>
   "use strict";
+  
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  function getDigitsOfNumber(number){
+    if (Number.isInteger(+number) && 0 <= +number && +number <= 999) {
+      return {
+        units: number % 10,
+        dozens: Math.trunc(number / 10) % 10,
+        hundreds: Math.trunc(number / 100) % 10,
+      }
+    }
+
+    console.error('Проверьте вводимое значение. Должно быть целое положительное число в диапазоне от 0 до 1000');
+    return {}
+  }
+
+  const numb = prompt('Введите положительное число от 0 до 1000: ');
+  const obj = getDigitsOfNumber(numb);
+  console.log(obj);
+  
 </script>
 </body>
 </html>

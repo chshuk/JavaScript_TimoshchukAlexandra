@@ -50,7 +50,83 @@
 <script>
   "use strict";
 
-  // Здесь пишем решение, данный комментарий необходимо стереть.
+  function PostES5(author, text){
+    this.author = author;
+    this.text = text;
+    this.changeTime = new Date();
+  }
+
+  PostES5.prototype.edit = function(newText) {
+    this.text = newText;
+    this.changeTime = new Date();
+  }
+
+  const newPost = new PostES5('Frog', 'Hello!!!');
+  console.log(`${newPost.author} написал: ${newPost.text}`);
+  console.log(`Дата последнего изменения: ${newPost.changeTime}`);
+
+  function AttachedPostES5(author, text) {
+    PostES5.call(this, author, text);
+    this.highLighted = false;
+  }
+
+  AttachedPostES5.prototype = Object.create(PostES5.prototype);
+  AttachedPostES5.prototype.constructor = AttachedPostES5;
+
+  AttachedPostES5.prototype.makeTextHighLighted = function() {
+    this.highLighted = true;
+  }
+
+  const newAttachedPost = new AttachedPostES5('Bear', 'Good Morning!!');
+
+  console.log(`${newAttachedPost.author} закрепил пост: ${newAttachedPost.text}`);
+  newAttachedPost.edit('Bye-bye!');
+  
+  console.log(`${newAttachedPost.author} исправил: ${newAttachedPost.text}`);
+  console.log(newAttachedPost.highLighted);
+  newAttachedPost.makeTextHighLighted();
+  console.log(newAttachedPost.highLighted);
+
+//---------------------------------------------------------------
+
+class PostES6{
+  constructor(author, text){
+    this.author = author;
+    this.text = text;
+    this.time = new Date();
+  }
+
+  edit(newText) {
+    this.text = newText;
+    this.time = new Date();
+  }
+}
+
+const newPost2 = new PostES6('Rabbit', 'Hello, people!!!');
+  console.log(`${newPost2.author} написал: ${newPost2.text}`);
+  console.log(`Дата последнего изменения: ${newPost2.time}`);
+
+  class AttachedPostES6 extends PostES6{
+    constructor(author, text){
+      super(author, text);
+      this.highLighted = false;
+    }
+
+    makeTextHighLighted() {
+      this.highLighted = true;
+    }
+  }
+
+  const newAttachedPost2 = new AttachedPostES6('Ship', 'Good Night!!');
+
+console.log(`${newAttachedPost2.author} закрепил пост: ${newAttachedPost2.text}`);
+newAttachedPost2.edit('Good-bye!');
+
+console.log(`${newAttachedPost2.author} исправил: ${newAttachedPost2.text}`);
+console.log(newAttachedPost2.highLighted);
+newAttachedPost2.makeTextHighLighted();
+console.log(newAttachedPost2.highLighted);
+
 </script>
 </body>
 </html>
