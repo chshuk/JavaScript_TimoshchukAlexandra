@@ -57,12 +57,18 @@
   теги будут созданы браузером.
   */
 
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log('Все теги прогрузились');
+  })
 
   /*
   2. Необходимо вывести сообщение в консоль "страница загрузилась", когда все
   ресурсы страницы будут загружены.
   */
 
+  window.addEventListener("load",() => {
+    console.log('Страница загрузилась');
+  })
 
   /*
   3. При клике на какой-либо тег на странице в консоль должно выводиться
@@ -74,12 +80,23 @@
   Необходимо использовать делегирование.
   */
 
+   window.addEventListener("click", event => {
+    if (event.target.classList.contains('super_element')) {
+      console.log(`Класс "super_element" присутствует в элементе ${event.target.tagName.toLowerCase()}`);
+    } else {
+      console.log(`Класс "super_element" отсутствует в элементе ${event.target.tagName.toLowerCase()}`);     
+    }
+   })
 
   /*
   4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение:
   "Вы навели на textarea."
    */
 
+   const textarea = document.querySelector('textarea');
+   textarea.addEventListener("mouseover", (event) => {
+    console.log(`Вы навели на ${event.target.type}`);
+   })
 
   /*
   5. Необходимо повесить событие клика на тег ul. В обработчике события в
@@ -89,6 +106,11 @@
   Необходимо использовать делегирование.
    */
 
+   document.querySelector('ul').addEventListener("click", event => {
+    if (event.target.tagName == 'BUTTON') {
+    console.log(event.target.textContent);
+    }
+   })
 
   /*
   6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и только
@@ -96,10 +118,17 @@
   Ответ необходимо написать здесь же, под этим комментарием, своими словами.
   */
 
+  // Потому что события выполняются в порядке всплытия. Сначала вложенные теги, потом родительские.
+  
 
   /*
   7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
    */
+
+   const liList = document.querySelectorAll('li');
+   for (let i = 1; i < liList.length; i += 2) {
+    liList[i].style.backgroundColor = 'yellow';
+   }
 
 </script>
 </body>
