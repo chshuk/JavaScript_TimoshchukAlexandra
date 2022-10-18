@@ -66,6 +66,11 @@
   также должен меняться.
   */
 
+  const inputFrom = document.querySelector('input#from');
+  const spanEl = document.querySelector('span');
+  inputFrom.addEventListener("input", event => {
+    spanEl.textContent = event.target.value;
+  });
 
   /*
   2. При клике на кнопку с классом messageBtn необходимо элементу с классом
@@ -74,6 +79,13 @@
   2) поставить данному элементу стиль visibility в значение 'visible'.
    */
 
+   const btnMessage = document.querySelector('button.messageBtn');
+   const messageEl = document.querySelector('.message');
+   btnMessage.addEventListener("click", () => {
+    messageEl.classList.add('animate__animated', 'animate__fadeInLeftBig');
+    messageEl.style.visibility = 'visible';
+   });
+   
 
   /*
   3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
@@ -86,6 +98,36 @@
   данному полю).
   Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
    */
+
+   const formEl = document.querySelector('form');
+   const inputForm = document.querySelector('input.form-control');
+   const selectForm = document.querySelector('select.form-control');
+   formEl.addEventListener("submit", (event) => {
+    if (inputForm.value === '') {
+      inputForm.classList.add('error');
+      event.preventDefault();
+    }
+    if (selectForm.value === '') {
+      selectForm.classList.add('error');
+      event.preventDefault();
+    }
+    console.log("!!!!!!!!!!!");
+   })
+   function check(event) {
+    if (event.target.value === "") {
+      event.target.classList.add('error');
+    } 
+    event.target.addEventListener('input', event => {
+      if (event.target.value === '') {
+        event.target.classList.add('error');
+      } else {
+        event.target.classList.remove('error');
+      }
+    })
+   }
+
+   inputForm.addEventListener("focus", check);
+   selectForm.addEventListener("focus", check);
 
 
 </script>

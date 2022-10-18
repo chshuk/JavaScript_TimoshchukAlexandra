@@ -38,12 +38,31 @@
   golden, также такой класс должен ставиться всем звездам до нее слева.
   */
 
+  const starsEl = document.querySelectorAll('.fa-star');
+  console.log(starsEl);
+  function goldenStyle(event) {
+      let elem = event.target;
+    while (elem !== null) {
+      elem.classList.add('golden');
+      elem = elem.previousElementSibling;
+    }
+  }
+  starsEl.forEach( elem => {
+    elem.addEventListener('mouseover', goldenStyle);
+  })
 
   /*
   2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
   задания должны быть удалены.
    */
 
+   starsEl.forEach(elem => {
+    elem.addEventListener('mouseout', () => {
+      starsEl.forEach(elem => {
+        elem.classList.remove('golden');
+      })
+    })
+   })
 
   /*
   3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
@@ -51,6 +70,17 @@
   Можем ли мы это исправить? Если да, то предложите решение.
   */
 
+  /* 
+   Звезды могут мигать при переводе от одной звезды к другой,\
+   потому что между ними существует свободное пространство, 
+   которое не относится ни к одному тегу.
+   чтобы этого избежать, мы можем изменить внешний отступ,
+   или записать все теги <i> слитно, без пробелов и переносов строк в html.
+  */
+
+  starsEl.forEach(elem => {
+    elem.style.marginRight = "-5px";
+  })  
 
 </script>
 </body>
