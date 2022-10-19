@@ -25,7 +25,18 @@
    * параметр "n"
    */
   function descendingOrder(n) {
-
+    if (!Number.isInteger(n)) {
+      console.error("Введите неотрицательное целое число");
+      return      
+    }
+    const arrayInt =  new Array();
+    let num = n;
+    while (num > 0) {
+      arrayInt.push(num % 10);
+      num = Math.trunc(num / 10);
+    }
+    arrayInt.sort((a, b) => a - b);
+    return +arrayInt.join('');
   }
 
   console.log(descendingOrder(42145)); // 54421
